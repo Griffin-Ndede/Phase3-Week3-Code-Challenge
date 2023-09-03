@@ -25,8 +25,8 @@ def fancy(cls):
 
 # getting all the reviews from a restaurant and formatting them
 def all_reviews(self):
-    formatted_revews =[]
+    formatted_reviews =[]
     for review in self.reviews:
         formatted_review = f"Review for {self.name} by {review.customer.full_name()}: {review.star_rating} stars."
-        formatted_revews.append(formatted_review)
+        formatted_reviews.append(formatted_review)
     return formatted_review
