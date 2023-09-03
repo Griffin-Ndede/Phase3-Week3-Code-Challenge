@@ -1,5 +1,5 @@
-from sqlalchemy import Column, Integer, String, ForeignKey
-from sqlalchemy.orm import relationship
+from sqlalchemy import Column, Integer, String, ForeignKey, create_engine
+from sqlalchemy.orm import relationship, sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
@@ -30,3 +30,8 @@ def all_reviews(self):
         formatted_review = f"Review for {self.name} by {review.customer.full_name()}: {review.star_rating} stars."
         formatted_reviews.append(formatted_review)
     return formatted_review
+
+# creating a database connection and session
+engine = create_engine('sqlite:///restaurant_reviews.db')
+Session = sessionmaker(bind=engine)
+session = Session()

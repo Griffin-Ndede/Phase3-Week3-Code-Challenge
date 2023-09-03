@@ -13,9 +13,9 @@ class Customer(Base):
     last_name = Column(String)
 
     # # customers are related to restaurants since they write reviews for restaurants
-    # reviews = relationship('Review', back_populates= 'customer')
+    reviews = relationship('Review', back_populates= 'customer')
     # # keeping track of which restaurant a customer likes
-    # restaurants = relationship('Restaurant', secondary = 'reviews', back_populates = 'customers')
+    restaurants = relationship('Restaurant', secondary = 'reviews', back_populates = 'customers')
 
     # concatenate first and last name and returns the value
     def full_name(self):
@@ -51,9 +51,9 @@ print ("Customer's Full Name is:", new_customer.full_name())
 
 
 # # creating a new review
-# restaurant_name = "Pizza Inn"
-# rating = 5
-# new_customer.add_review(restaurant_name,)
+restaurant_name = "Pizza Inn"
+rating = 5
+new_customer.add_review(restaurant_name,)
 
 #finding favorite restaurant
 favorite_restaurant = new_customer.fav_restaurant()
