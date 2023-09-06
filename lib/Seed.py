@@ -10,9 +10,15 @@ Session = sessionmaker(bind=engine)
 session = Session()
 
 # Define a function to add data to the database
+# Define a function to add data to the database
 def seed_data():
     # Create a list to store instances of the model classes
     all_data = []
+
+    # Define a lists to store instances of the models
+    customer_instances = []
+    restaurant_instances = []
+    review_instances = []
 
     # Defining the data to be added as dictionaries
     data = [
@@ -41,33 +47,26 @@ def seed_data():
 
         all_data.extend([customer, restaurant, review])
 
+        # Append instances to the lists
+        customer_instances.append(customer)
+        restaurant_instances.append(restaurant)
+        review_instances.append(review)
+
     session.add_all(all_data)
     session.commit()
 
-def print_deliverables():
-    pass
+    # Print customer names
+    for customer_instance in customer_instances:
+        print(customer_instance.full_name())
+    
+    # print restaurant names
+    for restaurant_instances in restaurant_instances:
+        print(restaurant_instances.name, restaurant_instances.reviews)
 
+    # printint reviews
+    for review_instances in review_instances:
+        print(review_instances.full_review)
+
+    # creating a new customer
 if __name__ == "__main__":
     seed_data()
-    print_deliverables()
-
-
-
-
-
-# # creating new customer
-# new_customer = Customer(first_name = "Griffin", last_name = "Omondi")
-# print ("Customer's Full Name is:", new_customer.full_name())
-
-
-# # # creating a new review
-# restaurant_name = "Pizza Inn"
-# rating = 5
-# new_customer.add_review(restaurant_name,)
-
-# #finding favorite restaurant
-# favorite_restaurant = new_customer.fav_restaurant()
-# if favorite_restaurant:
-#     print("Favorite Restaurant:", favorite_restaurant.name)
-# else:
-#     print("No favorite restaurant found.")

@@ -25,7 +25,7 @@ class Customer(Base):
 
     # concatenate first and last name and returns the value
     def full_name(self):
-        return f"{self.first_name}, {self.last_name}"
+        return f"{self.first_name} {self.last_name}"
     
     # finding the restaurant a customer likes the most
     def fav_restaurant(self):
