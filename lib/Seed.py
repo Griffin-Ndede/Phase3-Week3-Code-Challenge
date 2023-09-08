@@ -67,6 +67,5 @@ def seed_data():
     for review_instances in review_instances:
         print(review_instances.full_review)
 
-    # creating a new customer
 if __name__ == "__main__":
     seed_data()
